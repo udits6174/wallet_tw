@@ -1,38 +1,44 @@
-import { ConnectWallet, useAddress} from "@thirdweb-dev/react";
-import "./styles/Home.css";
-import Txnlist from './pages/Txnlist'
-import { useEffect } from "react";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+import "./App.css"
+import Txnlist from "./components/Txnlist";
 export default function Home() {
+
   const userAddress = useAddress();
 
-  useEffect(()=>{
-
-    
-  },[userAddress])
-  
   return (
-        <>
-          <h1 className="title">
-            Welcome to{" "}
-            <span className="gradient-text-0">
-              <a
-                href="https://thirdweb.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                wallet.
-              </a>
-            </span>
-          </h1>
-          <div style={{display: "flex", justifyContent: "center", alignItems:"center"}}>
+    <div className="px-2">
 
-          <ConnectWallet
-            theme={"dark"}
-            modalSize={"compact"}
-          />
-          </div>
+    <div className="">
 
-          <Txnlist address={userAddress}/>
-        </>
+    <div className="">
+      <h1 className="title py-5">
+        Wallet
+        <span className="gradient-text-0">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            tw.
+          </a>
+        </span>
+      </h1>
+      </div>
+
+      <div className='flex items-center justify-center pb-4'>
+        <ConnectWallet theme={"dark"} modalSize={"compact"} />
+      </div>
+
+      <div className="flex items-center justify-center">
+      <div>
+      {userAddress &&
+        <Txnlist address={userAddress} />
+      }
+      
+      </div>
+      </div>
+
+</div>
+    </div>
   );
 }
